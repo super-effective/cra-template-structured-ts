@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import <%= name.toPascalCase() %> from './<%= name.toPascalCase() %>';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<<%= name.toPascalCase() %> />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('Renders the <%= name %> element', () => {
+  render(<<%= name.toPascalCase() %> />);
+  const div = screen.getByText(/<%= name %>/i);
+  expect(div).toBeInTheDocument();
 });

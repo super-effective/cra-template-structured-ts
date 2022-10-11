@@ -1,8 +1,8 @@
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import Page from './Page';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Page />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('Renders the page element', () => {
+  render(<Page />);
+  const pageDiv = screen.getByText(/Page/i);
+  expect(pageDiv).toBeInTheDocument();
 });
